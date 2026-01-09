@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: agrismart-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: agrismart
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - agrismart-network
+
+  backend:
+    build: ./backend
+    container_name: agrismart-backend
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: production
+      MONGODB_URI: mongodb://admin:password@mongodb:27017/agrismart
+      JWT_SECRET_KEY: your-secret-key-change-this
+    depends_on:
+      - mongodb
+    networks:
+      - agrismart-network
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    container_name: agrismart-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:5000/api
+    depends_on:
+      - backend
+    networks:
+      - agrismart-network
+
+volumes:
+  mongo_data:
+
+networks:
+  agrismart-network:
+    driver: bridge

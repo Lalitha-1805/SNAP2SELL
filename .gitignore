@@ -1,0 +1,54 @@
+# Backend
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/.env.local
+backend/instance/
+backend/logs/
+backend/data/faiss_index.pkl
+backend/models/*.pkl
+backend/.DS_Store
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+.mongodb/
+
+# Logs
+*.log
+logs/
+
+# Docker
+.dockerignore
+
+# General
+*.bak
+*.tmp
+.env.*.local

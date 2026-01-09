@@ -512,6 +512,4 @@ For issues and questions:
 
 ---
 
-**Created with ❤️ for Indian Agriculture**
 
-AgriSmart v1.0.0 - Making Agriculture Smart and Profitable
